@@ -22,7 +22,6 @@ public class Main {
 
             int operation = Integer.parseInt(input);
 
-
             switch (operation) {
                 case 1:
                     System.out.println("Введите сумму дохода:");
@@ -41,6 +40,7 @@ public class Main {
                     break;
                 default:
                     System.out.println("Такой операции нет");
+                    break;
             }
 
         }
@@ -48,8 +48,7 @@ public class Main {
     }
 
 
-
-    public static int taxEarningsMinusSpendings(int earnings, int spendings){
+    public static int taxEarningsMinusSpendings(int earnings, int spendings) {
         int tax = (earnings - spendings) * 15 / 100;
         if (tax >= 0) {
             return tax;
@@ -58,7 +57,7 @@ public class Main {
         }
     }
 
-    public static int taxEarningsPercent(int earnings){
+    public static int taxEarningsPercent(int earnings) {
         int tax = earnings * 6 / 100;
         if (tax >= 0) {
             return tax;
@@ -67,28 +66,26 @@ public class Main {
         }
     }
 
-    public static void taxOutput(int earnings, int spendings){
+    public static void taxOutput(int earnings, int spendings) {
         int taxEarnPers = taxEarningsPercent(earnings);
-        int taxEarnMinusSpend = taxEarningsMinusSpendings(earnings,spendings);
+        int taxEarnMinusSpend = taxEarningsMinusSpendings(earnings, spendings);
         int deference = taxEarnPers - taxEarnMinusSpend;
 
-        if(deference > 0){
+        if (deference > 0) {
             System.out.println("---------------------------------------------------------");
             System.out.println("Мы советуем вам УСН доходы минус расходы");
             System.out.println("Ваш налог составит " + taxEarnMinusSpend + " рублей");
             System.out.println("Налог на другой системе " + taxEarnPers + " рублей");
-            System.out.println("Экономия " + (taxEarnPers - taxEarnMinusSpend)  + " рублей");
+            System.out.println("Экономия " + (taxEarnPers - taxEarnMinusSpend) + " рублей");
             System.out.println("---------------------------------------------------------");
-        }
-        else if(deference < 0){
+        } else if (deference < 0) {
             System.out.println("---------------------------------------------------------");
             System.out.println("Мы советуем вам УСН доходы ");
             System.out.println("Ваш налог составит " + taxEarnPers + " рублей");
             System.out.println("Налог на другой системе " + taxEarnMinusSpend + " рублей");
-            System.out.println("Экономия " + (taxEarnMinusSpend - taxEarnPers)  + " рублей");
+            System.out.println("Экономия " + (taxEarnMinusSpend - taxEarnPers) + " рублей");
             System.out.println("---------------------------------------------------------");
-        }
-        else{
+        } else {
             System.out.println("Можете выбрать любую систему налогообложения ");
         }
     }
